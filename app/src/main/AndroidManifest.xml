@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.theenm.android">
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
+
+    <uses-feature android:glEsVersion="0x00020000"/>
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true"/>
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="true"/>
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <application
+        android:name="com.theenm.common.MyApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:usesCleartextTraffic="true"
+        tools:replace="android:allowBackup,android:fullBackupContent"
+        tools:ignore="LockedOrientationActivity,UnusedAttribute"
+        android:resizeableActivity="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 원스토어 인앱결제 -->
+        <meta-data
+            android:name="iap:api_version"
+            android:value="5" />
+        <!-- 에드브릭스 -->
+        <meta-data
+            android:name="igaworks_app_key"
+            android:value="@string/igaworks_app_key"/>
+        <!-- 에드브릭스 -->
+        <meta-data
+            android:name="igaworks_hash_key"
+            android:value="@string/igaworks_hash_key"/>
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1"/>
+        <!-- 카카오 -->
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="@string/kakao_app_key" />
+        <!-- 페이스북 -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="AdBrixRmAppKey"
+            android:value="@string/adbrix_app_id" />
+        <meta-data
+            android:name="AdBrixRmSecretKey"
+            android:value="@string/adbrix_app_secret_id" />
+        <meta-data
+            android:name="com.facebook.sdk.CodelessDebugLogEnabled"
+            android:value="true" />
+        <!-- Firebase FCM-->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/main_bg" />
+        <meta-data
+            android:name="android.allow_multiple_resumed_activities" android:value="true" />
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            android:supportsPictureInPicture="true"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="FIREBASE_MESSAGING_ACTION" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="popkontv" android:host="main"/>
+            </intent-filter>
+        </activity>
+        <!-- scheme, host 웨페이지 호출 셈플 : Intent://search#Intent;scheme=Tvten;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;package=kr.tvten.android.air;end-->
+
+        <activity
+            android:name="com.theenm.setting.PinSettingActivity"
+            android:label="VodInfoActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <!-- 푸시 알림 섯비스 -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+
+        <service
+            android:name="com.theenm.common.fcm.FCMFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name="com.theenm.watch.WatchPopupService" />
+
+        <activity
+            android:name="com.theenm.login.LoginActivity"
+            android:label="LoginActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustNothing">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:launchMode="singleTask"
+            android:name="com.theenm.login.SignActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:label="SignActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
+        </activity>
+
+        <activity
+            android:name="com.theenm.login.SignCompeteActivity"
+            android:label="SignCompeteActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name="com.theenm.login.MemberjoinActivity"
+            android:label="MemberjoinActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.login.FindIdPwActivity"
+            android:label="FindIdPwActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.login.ChangePasswordActivity"
+            android:label="ChangePasswordActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+
+        <!-- 웹뷰 커스텀-->
+        <activity
+            android:name="com.theenm.event.MyWebViewActivity"
+            android:label="EventWebViewActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.setting.SettingActivity"
+            android:label="SettingActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.setting.ItemListActivity"
+            android:label="ItemListActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.setting.PopkonHistoryActivity"
+            android:label="PopkonHistoryActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.theenm.setting.PushTimeActivity"
+            android:label="PushTimeActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.theenm.setting.PushListActivty"
+            android:label="PushListActivty"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.theenm.setting.ItemPurchaseActivity"
+            android:label="ItemPurchaseActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.theenm.setting.PopkonPurchaseActivity"
+            android:label="PopkonPurchaseActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.theenm.setting.BanwordWebActivity"
+            android:label="BanwordWebActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.theenm.watch.PopupTargetActivity">
+        </activity>
+
+        <!-- [begin] 고객 센터 -->
+
+        <activity
+            android:name="com.theenm.service.center.ServiceWebActivity"
+            android:label="ServiceWebActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <!-- [end] 고객 센터 -->
+
+        <!-- 쪽지함 -->
+        <activity
+            android:name="com.theenm.message.MessageActivity"
+            android:label="MessageActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.theenm.message.MessageViewActivity"
+            android:label="MessageViewActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.theenm.message.MessageReplyActivity"
+            android:label="MessageReplyActivity"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <!-- [end] 쪽지함 -->
+
+        <!-- 잠금 화면 -->
+        <activity
+            android:name="com.theenm.lock.LockScreenActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize|screenLayout|density"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTop">
+        </activity>
+
+        <!-- 회원가입 -->
+        <activity
+            android:name="com.theenm.login.MemberSignupActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|density"
+            android:label="MemberSignupActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.login.GuideAndPolicyActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|density"
+            android:label="GuideAndPolicyActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.login.MemberWriteInfoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|density"
+            android:label="MemberWriteInfoActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.login.CellphoneCertificationActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|density"
+            android:label="CellphoneCertificationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.theenm.login.ConfirmCertificationActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|screenLayout|density"
+            android:label="ConfirmCertificationActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.theenm.common.broadcast.MultipleInstallReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.appsflyer.MultipleInstallBroadcastReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Android Referrer -->
+        <receiver
+            android:name="com.theenm.common.broadcast.GlobalBroadcastReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

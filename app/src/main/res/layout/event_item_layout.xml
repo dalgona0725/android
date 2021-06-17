@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/enterevt_pc_portrait_margin_left_right"
+    android:layout_marginRight="@dimen/enterevt_pc_portrait_margin_left_right"
+    android:layout_marginTop="@dimen/enterevt_pc_portrait_margin_top"
+    android:layout_marginBottom="@dimen/enterevt_pc_portrait_margin_bottom">
+
+    <!-- 입장 효과 -->
+    <RelativeLayout
+        android:id="@+id/event_item_parent_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00000000"
+        android:visibility="visible"
+        tools:visibility="gone">
+
+        <com.theenm.common.widget.AdjustImageView
+            android:id="@+id/event_item_animaion_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
+
+        <LinearLayout
+            android:id="@+id/enterevt_label_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="2.5dp"
+            android:layout_marginBottom="2.5dp"
+            android:background="#00000000"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            tools:visibility="gone">
+
+            <TextView
+                android:id="@+id/enterevt_nickname_txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:includeFontPadding="false"
+                android:textColor="@color/enterevt_nickname_text_color"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                android:text=""/>
+
+            <TextView
+                android:id="@+id/enterevt_label_txt_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_marginLeft="3dp"
+                android:maxLines="1"
+                android:includeFontPadding="false"
+                android:textColor="@color/enterevt_label_text_color"
+                android:textSize="14dp"
+                android:textStyle="bold"
+                android:text="@string/enterevt_welcome_user"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

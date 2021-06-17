@@ -1,0 +1,181 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/actionBarSize"
+                android:background="@color/main_bg"
+                app:contentInsetStart="0dp"
+                app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+                app:theme="@style/Toolbar">
+            </androidx.appcompat.widget.Toolbar>
+
+            <com.theenm.common.widget.slidingtab.SlidingTabLayout
+                android:id="@+id/sliding_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height"
+                android:layout_below="@+id/toolbar"
+                android:background="@color/main_bg"/>
+
+            <LinearLayout
+                android:id="@+id/linear_banner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sliding_tabs"
+                android:orientation="horizontal"
+                app:layout_collapseMode="pin">
+            </LinearLayout>
+
+            <com.theenm.common.widget.MyViewPager
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linear_banner"
+                android:background="@color/color_FFFFFF"/>
+
+            <RelativeLayout
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/linear_preview"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sliding_tabs"
+                android:layout_gravity="top"
+                android:background="#4D4D4D"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <FrameLayout
+                    android:layout_width="122dp"
+                    android:layout_height="88dp"
+                    android:layout_margin="8dp"
+                    android:background="@color/color_000000">
+
+                    <com.google.android.exoplayer2.ui.PlayerView
+                        android:id="@+id/exo_player"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" >
+                    </com.google.android.exoplayer2.ui.PlayerView>
+
+                    <LinearLayout
+                        android:id="@+id/player_progress_linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone"
+                        android:gravity="center">
+
+                        <ProgressBar
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"/>
+                    </LinearLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:textColor="#FFFFFF"
+                        android:textSize="@dimen/txt_list_title"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btn_volume"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="0"
+                    android:padding="8dp"
+                    android:src="@drawable/icon_enable_sound"/>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/fragment_watch_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </RelativeLayout>
+
+        <fragment
+            android:id="@+id/navigation_drawer"
+            android:name="com.theenm.android.navigation.NavigationDrawerFragment"
+            android:layout_width="@dimen/navigation_drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            tools:layout="@layout/navigation_drawer"/>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+    <FrameLayout
+        android:id="@+id/frame_intro"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <ImageView
+            android:id="@+id/img_ad_exe"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/intro"/>
+
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="right|top"
+            android:padding="8dp"
+            android:alpha="0.5"
+            android:src="@drawable/icon_cancel"
+            android:visibility="gone"/>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/linear_info_dot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+</FrameLayout>

@@ -1,0 +1,2077 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 6
+        versionName "4.0.3"
+        multiDexEnabled true
+//        renderscriptTargetApi 19
+//        renderscriptSupportModeEnabled true
+        useLibrary 'org.apache.http.legacy'
+//        ndk {
+//            abiFilters 'armeabi-v7a','arm64-v8a','x86','x86_64'
+//        }
+    }
+
+    packagingOptions {
+        exclude '/META-INF/LICENSE'
+        doNotStrip '*/mips/*.so'
+        doNotStrip '*/mips64/*.so'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//    Appbundle로 빌드할 경우 주석 해제 후 빌드
+//
+//    tasks.whenTaskAdded { task ->
+//        if (task.name.startsWith("bundle") && task.name.contains("Release")) {
+//            def renameTaskName = "rename${task.name.capitalize()}Aab"
+//            def deleteTaskName = "delete${task.name.capitalize()}Aab"
+//            def flavor = task.name.substring("bundle".length()).uncapitalize().replace("Release", "")
+//            def fileName = flavor;
+//            if (fileName == "fourtenTV")
+//                fileName = "4tenTV"
+//            else if (fileName == "tvTen")
+//                fileName = "tv10"
+//            else if (fileName == "ninetysix")
+//                fileName = "96TV"
+//            else if (fileName == "ninetynine")
+//                fileName = "99TV"
+//            else if (fileName == "seventyseven")
+//                fileName = "77TV"
+//            else if (fileName == "tv101")
+//                fileName = "101TV"
+//            else if (fileName == "tv79")
+//                fileName = "79TV"
+//            else if (fileName == "tvyaTV")
+//                fileName = "tvya"
+//            else if (fileName == "macarongTV")
+//                fileName = "macarong"
+//            else if (fileName == "ppapTV")
+//                fileName = "ppap"
+//            else if (fileName == "drlivetv")
+//                fileName = "drlive"
+//            else if (fileName == "kklivetv")
+//                fileName = "kklive"
+//            else if (fileName == "bjlivetv")
+//                fileName = "bjlive"
+//            else if (fileName == "ssunliveTV")
+//                fileName = "ssunlive"
+//            else if (fileName == "muteliveTV")
+//                fileName = "mutelive"
+//
+//            //Window 경로
+//            //Window에서 빌드할 경우 주석 해제
+////            def destinationPath = "D:/Release_Build/Original"
+//            //mac 경로
+//            //mac에서 빌드할 경우 주석 해
+////            def destinationPath = "/Users/test/Desktop/Releas/e_Build/Original"
+//
+//            tasks.create(renameTaskName, Copy) {
+//                def releasePath = "${destinationPath}/${flavor}/release"
+//                def copyPath = "${destinationPath}";
+//                from(releasePath)
+//                include "app.aab"
+//                destinationDir file(copyPath)
+//                rename "app.aab", "${fileName}.aab"
+//            }
+//            task.finalizedBy(renameTaskName)
+//
+//            tasks.create(deleteTaskName, Delete) {
+//                def deletePath = "${destinationPath}/${flavor}"
+//                delete "${deletePath}"
+//            }
+//            task.finalizedBy(deleteTaskName)
+//        }
+//    }
+
+    //Generate Signed bundle/apk를 실행할때 디버그 파일은 목록에 나오지 않도록 변경
+    //release 빌드할 경우에만 주석 풀어서 사용
+//    variantFilter { variant ->
+//        def names = variant.buildType.name
+//        if (names.contains("debug")) {
+//            setIgnore(true)
+//        }
+//    }
+
+    buildTypes {
+        release {
+//            debuggable true
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def fileName = variant.baseName.replace("-release", "")
+                    if (fileName == "fourtenTV")
+                        fileName = "4tenTV"
+//                    else if (fileName == "tvTen")
+//                        fileName = "tv10"
+                    else if (fileName == "ninetysix")
+                        fileName = "96TV"
+                    else if (fileName == "ninetynine")
+                        fileName = "99TV"
+                    else if (fileName == "seventyseven")
+                        fileName = "77TV"
+                    else if (fileName == "tv101")
+                        fileName = "101TV"
+                    else if (fileName == "tv79")
+                        fileName = "79TV"
+                    else if (fileName == "tvyaTV")
+                        fileName = "tvya"
+                    else if (fileName == "macarongTV")
+                        fileName = "macarong"
+                    else if (fileName == "ppapTV")
+                        fileName = "ppap"
+                    else if (fileName == "drlivetv")
+                        fileName = "drlive"
+                    else if (fileName == "kklivetv")
+                        fileName = "kklive"
+                    else if (fileName == "bjlivetv")
+                        fileName = "bjlive"
+                    else if (fileName == "ssunliveTV")
+                        fileName = "ssunlive"
+                    else if (fileName == "muteliveTV")
+                        fileName = "mutelive"
+                    else if (fileName == "popkonTV_skt")
+                        fileName = "PopkonAir"
+                    else if (fileName == "tving19")
+                        fileName = "19tving"
+                    else if (fileName == "pinktv")
+                        fileName = "PINKTV"
+
+
+                    outputFileName = new File("../", "${fileName}.apk")
+                }
+
+                variant.assembleProvider.get().doLast{
+                    variant.outputs.each { output ->
+                        delete "${output.outputFile.parent}/${variant.flavorName}"
+                    }
+                }
+            }
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            aaptOptions.cruncherEnabled = false
+            ext { minSdkVersion = 21 }
+            ext.enableCrashlytics = false;
+        }
+    }
+
+//    sourceSets {
+//        if(getGradle().getStartParameter().getTaskRequests().toString().contains("CeluvTV")){
+//            celuvTV{
+//                main{
+//                    assets.srcDirs = ['src/celuvTV/assets']
+//                }
+//            }
+//        } else{
+//            main{
+//                assets.srcDirs = ['src/main/assets']
+//            }
+//        }
+//    }
+
+    flavorDimensions "flavors"
+    productFlavors {
+        popkonTV_google {
+            dimension "flavors"
+            applicationId "com.social.media.pop.g"
+            versionCode 1
+            versionName "4.6.00.014"
+        }
+        popkonTV_skt {
+            dimension "flavors"
+            applicationId "cob.popkontvair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+    	celuvTV {
+            dimension "flavors"
+            applicationId "com.theenm.celuvtv.aos.asp"
+            versionCode 15
+            versionName "1.5.00.014"
+        }
+
+        // 셀럽티비 - 원스토어용
+        celuvTV_skt {
+            dimension "flavors"
+            applicationId "com.celuvair.android.air"
+            versionCode 2
+            versionName "5.1.00"
+        }
+
+        // 강냉이
+        kangTV {
+            dimension "flavors"
+            applicationId "kf.watch.kangnaengi.android.air"
+            versionCode 3
+            versionName "4.6.01"
+        }
+
+        // 강냉이 - 원스토어
+        kangTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.kangair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        // 밍키
+        mingkyTV {
+            dimension "flavors"
+            applicationId "cob.mingkytv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        // 밍키 - 원스토어
+        mingkyTV_skt {
+            dimension "flavors"
+            applicationId "com.mingkilive.android.air"
+            versionCode 1
+            versionName "5.0.00"
+        }
+
+        //오렌지
+        orgTV {
+            dimension "flavors"
+            applicationId "ka.co.orangetv.android.air"
+            versionCode 9
+            versionName "4.6.00"
+        }
+
+        //오렌지 - 원스토어
+        orgTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.orglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //인스타
+        instarTV {
+            dimension "flavors"
+            applicationId "kb.watch.instatv.android.air"
+            versionCode 5
+            versionName "4.6.00"
+        }
+
+        //인스타 - 원스토어
+        instarTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.instalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //버블
+        bubbleTV {
+            dimension "flavors"
+            applicationId "kc.bubbletv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //버블 - 원스토어
+        bubbleTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.bubblelive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //힐링
+        healingTV {
+            dimension "flavors"
+            applicationId "kc.watch.healtivi.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //힐링 - 원스토어
+        healingTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.healring.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //밤부
+        bambooTV {
+            dimension "flavors"
+            applicationId "ka.co.bbtv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //밤부 - 원스토어
+        bambooTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.bamboolive.android.air"
+            versionCode 1
+            versionName "5.0.00"
+        }
+
+//        //풀빵
+//        pull0TV {
+//            dimension "flavors"
+//            applicationId "com.pulltv.android.air"
+//            versionCode 9
+//            versionName "4.1.00"
+//        }
+
+        //도토리
+        dotoriTV {
+            dimension "flavors"
+            applicationId "kd.watch.dtrtv.android.air"
+            versionCode 5
+            versionName "4.5.00"
+        }
+
+        //도토리 - 원스토어
+        dotoriTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.dotorilive.android.air"
+            versionCode 2
+            versionName "5.1.00"
+        }
+
+        //쪼아
+        jjoaTV {
+            dimension "flavors"
+            applicationId "com.jjooaatv.android.air"
+            versionCode 2
+            versionName "4.6.00"
+        }
+
+        //쪼아 - 원스토어
+        jjoaTV_skt {
+            dimension "flavors"
+            applicationId "com.jjoalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //달티비
+        smtv {
+            dimension "flavors"
+            applicationId "kb.smtivi.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //달티비 - 원스토어
+        smtv_skt {
+            dimension "flavors"
+            applicationId "kr.co.moonlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //톡톡
+        toktokTV {
+            dimension "flavors"
+            applicationId "kh.toktok.android.air"
+            versionCode 1
+            versionName "4.6.01"
+        }
+
+        //톡톡 - 원스토어
+        toktokTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.toklive.android.air"
+            versionCode 4
+            versionName "5.2.00"
+        }
+
+        //플레이 (서비스중지, 2020.04.22)
+//        playchannel {
+//            dimension "flavors"
+//            applicationId "kb.playchannel.android.air"
+//            versionCode 14
+//            versionName "4.1.01"
+//        }
+
+        //보고
+//        bogoTV {
+//            dimension "flavors"
+//            applicationId "kb.bogotv.android.air"
+//            versionCode 3
+//            versionName "4.1.00"
+//        }
+
+        //짱
+        jjangtv {
+            dimension "flavors"
+            applicationId "kb.watch.jjatv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //짱 - 원스토어
+        jjangtv_skt {
+            dimension "flavors"
+            applicationId "kr.co.jjanglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //핫독
+        hotdogTV {
+            dimension "flavors"
+            applicationId "kd.watch.hatdogu.android.air"
+            versionCode 4
+            versionName "4.6.00"
+        }
+
+        //핫독 - 원스토어
+        hotdogTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.hotdoglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //볼래
+        bollehTV {
+            dimension "flavors"
+            applicationId "nef.bolleh.android.air"
+            versionCode 4
+            versionName "4.5.00"
+        }
+
+        //볼래 - 원스토어
+        bollehTV_skt {
+            dimension "flavors"
+            applicationId "nea.bollehlive.android.air"
+            versionCode 2
+            versionName "5.1.00"
+        }
+
+        //초코
+        chocoTV {
+            dimension "flavors"
+            applicationId "kr.watch.chokkotv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //초코 - 원스토어
+        chocoTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.chocolive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //소라
+        soraTV {
+            dimension "flavors"
+            applicationId "nej.soratv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //소라 - 원스토어
+        soraTV_skt {
+            dimension "flavors"
+            applicationId "net.soralive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //쿨
+        coolTV {
+            dimension "flavors"
+            applicationId "ka.watch.cul.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //쿨 - 원스토어
+        coolTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.coollive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //핫스팟
+        hotspotTV {
+            dimension "flavors"
+            applicationId "kd.co.hotspot.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //핫스팟 - 원스토어
+        hotspotTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.hotspotair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //바나나
+        bananaTV {
+            dimension "flavors"
+//            applicationId "kd.bananalive.android.air"
+            applicationId "ka.co.bnnlv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //바나나 - 원스토어
+        bananaTV_skt {
+            dimension "flavors"
+//            applicationId "kd.bananalive.android.air"
+            applicationId "kr.co.bananaair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //보라
+        boraTV {
+            dimension "flavors"
+            applicationId "nes.watch.boratv.android.air"
+            versionCode 2
+            versionName "4.6.00"
+        }
+
+        //보라 - 원스토어
+        boraTV_skt {
+            dimension "flavors"
+            applicationId "net.boralive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+//        //핫썸
+//        hotsomeTV {
+//            dimension "flavors"
+//            applicationId "com.hotsometv.android.air"
+//            versionCode 10
+//            versionName "4.1.00"
+//        }
+
+        //스푼 - 서비스 종료
+//        spoonTV {
+//            dimension "flavors"
+//            applicationId "kc.spoontv.android.air"
+//            versionCode 2
+//            versionName "4.4.00"
+//        }
+
+        //스푼 - 원스토어
+//        spoonTV_skt {
+//            dimension "flavors"
+//            applicationId "kr.spoonair.android.air"
+//            versionCode 1
+//            versionName "5.0.00"
+//        }
+
+        //킹콩
+        kingkongTV {
+            dimension "flavors"
+//            applicationId "cog.kingkongtv.android.air"
+            applicationId "cof.watch.kktiv.android.air"
+            versionCode 1
+            versionName "4.6.03"
+        }
+
+        //킹콩 - 원스토어
+        kingkongTV_skt {
+            dimension "flavors"
+//            applicationId "cog.kingkongtv.android.air"
+            applicationId "com.kingkonglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //라임
+        limeTV {
+            dimension "flavors"
+            applicationId "ka.co.lmtv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //라임 - 원스토어
+        limeTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.limelive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //레몬
+        remonTV {
+            dimension "flavors"
+            applicationId "kg.watch.lemontv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //레몬 - 원스토어
+        remonTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.remonlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //뽕
+        bbongTV {
+            dimension "flavors"
+            applicationId "kg.bbpongtiv.android.air"
+            versionCode 2
+            versionName "4.6.00"
+        }
+
+        //뽕 - 원스토어
+        bbongTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.bbonglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+//        //자자
+//        zazaTV {
+//            dimension "flavors"
+//            applicationId "ka.zazatv.android.air"
+//            versionCode 5
+//            versionName "4.1.00"
+//        }
+
+//        //나초
+//        nachoTV {
+//            dimension "flavors"
+//            applicationId "cob.nachotv.android.air"
+//            versionCode 2
+//            versionName "4.1.00"
+//        }
+
+        //쿵
+        koongTV {
+            dimension "flavors"
+            applicationId "kd.koongtv.android.air"
+            versionCode 5
+            versionName "4.6.0"
+        }
+
+        //쿵 - 원스토어
+        koongTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.koonglive.android.air"
+            versionCode 2
+            versionName "5.1.00"
+        }
+
+        //걸
+        girlTV {
+            dimension "flavors"
+            applicationId "ko.girltv.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //걸 - 원스토어
+        girlTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.girllive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //오이
+        o2TV {
+            dimension "flavors"
+            applicationId "kq.watch.o2tivi.android.air"
+            versionCode 5
+            versionName "4.6.00"
+        }
+
+        //오이 - 원스토어
+        o2TV_skt {
+            dimension "flavors"
+            applicationId "kr.co.o2air.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //도치
+        dochiTV {
+            dimension "flavors"
+            applicationId "ke.cookietv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //도치 - 원스토어
+        dochiTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.dochilive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //락
+        rakTV {
+            dimension "flavors"
+            applicationId "kc.rocktv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //락 - 원스토어
+        rakTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.raklive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //키스
+        kissTV {
+            dimension "flavors"
+            applicationId "ki.watch.kisstivi.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //키스 - 원스토어
+        kissTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.kisslive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //비타민
+        vitatv {
+            dimension "flavors"
+            applicationId "cg.vitatv.android.air"
+            versionCode 5
+            versionName "4.6.00"
+        }
+
+        //비타민 - 원스토어
+        vitatv_skt {
+            dimension "flavors"
+            applicationId "com.vitalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //공유
+        outv {
+            dimension "flavors"
+//            applicationId "ka.outv.android.air"
+            applicationId "kf.watch.outivi.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //공유 - 원스토어
+        outv_skt {
+            dimension "flavors"
+//            applicationId "ka.outv.android.air"
+            applicationId "kr.co.oulive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //양파
+        yangpatv {
+            dimension "flavors"
+            applicationId "ke.yangpatv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //양파 - 원스토어
+        yangpatv_skt {
+            dimension "flavors"
+            applicationId "kr.co.yangpalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //킹
+        kingtv { // 2017.11.13
+            dimension "flavors"
+            applicationId "kb.media.ktivi.android.air"
+            versionCode 6
+            versionName "4.6.01"
+        }
+
+        //킹 - 원스토어
+        kingtv_skt { // 2017.11.13
+            dimension "flavors"
+            applicationId "kr.co.kinglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+//        //롱투투
+//        longtutuTV {
+//            dimension "flavors"
+//            applicationId "com.longtututv.android.air"
+//            versionCode 11
+//            versionName "4.1.00"
+//        }
+
+//        //고릴라
+//        goreala {
+//            dimension "flavors"
+//            applicationId "kr.goreala.android.air"
+//        }
+
+//        //사이다
+//        ciderTV {
+//            dimension "flavors"
+//            applicationId "kb.cidertv.android.air"
+//            versionName "4.0.2"
+//        }
+
+        //포텐 - 서비스 종료
+//        fourtenTV {
+//            dimension "flavors"
+//            applicationId "coc.potentv.android.air"
+//            versionCode 6
+//            versionName "4.6.00"
+//        }
+
+        //포텐 - 원스토어
+//        fourtenTV_skt {
+//            dimension "flavors"
+//            applicationId "com.fourtenlive.android.air"
+//            versionCode 3
+//            versionName "5.2.00"
+//        }
+
+//        //에소프레소
+//        espressoTV {
+//            dimension "flavors"
+//            applicationId "kr.espressotv.android.air"
+//        }
+
+        //티비텐플러스 - 2020.06.30 서비스 종료
+//        tvTen {
+//            // 최신 Gocoder library 사용을 위해 minSdkVersion 업데이트
+//            // 최신 Gocoder library를 사용하는 이유는 64bit 단말을 지원하기 위해서
+//            minSdkVersion 21
+//            dimension "flavors"
+//            applicationId "kr.tvten.android.air"
+//            versionCode 18
+//            versionName "4.2.02"
+//        }
+
+        //96
+        ninetysix { // 2018.10.22
+            dimension "flavors"
+            applicationId "kh.co.ntsixtv.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //96 - 원스토어
+        ninetysix_skt { // 2018.10.22
+            dimension "flavors"
+            applicationId "kr.co.guyuglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //클럽
+        clubTV {
+            dimension "flavors"
+            applicationId "kn.co.clubtivi.android.air"
+            versionCode 1
+            versionName "4.6.01"
+        }
+
+        //클럽 - 원스토어
+        clubTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.clublive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //99
+        ninetynine {
+            dimension "flavors"
+            applicationId "ke.watch.gugutv.android.air"
+            versionCode 1
+            versionName "4.6.01"
+        }
+
+        //99 - 원스토어
+        ninetynine_skt {
+            dimension "flavors"
+            applicationId "kr.co.gugulive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //포도
+        thepodoTV {
+            dimension "flavors"
+            applicationId "cod.watch.tpd.android.air"
+            versionCode 4
+            versionName "4.6.00"
+        }
+
+        //포도 - 원스토어
+        thepodoTV_skt {
+            dimension "flavors"
+            applicationId "com.grapelive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //자라
+        zaraTV {
+            dimension "flavors"
+            applicationId "kl.co.zrtv.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //자라 - 원스토어
+        zaraTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.zaralive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //3040
+        tv3040 {
+            dimension "flavors"
+            applicationId "cog.thirtyforty.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //3040 - 원스토어
+        tv3040_skt {
+            dimension "flavors"
+            applicationId "com.sgsglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //77 (kr.co.seventyseventv.android.air => ka.co.seventyseventv.android.air)
+        seventyseven {
+            dimension "flavors"
+            applicationId "ke.watch.ststiv.android.air"
+            versionCode 1
+            versionName "4.6.01"
+        }
+
+        //77  - 원스토어
+        seventyseven_skt {
+            dimension "flavors"
+            applicationId "kr.co.chiichii.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //봄
+        bomlive {
+            dimension "flavors"
+//            applicationId "kr.co.watch.bmlv.android"
+            applicationId "ke.watch.vomlaiv.android.air"
+            versionCode 2
+            versionName "4.6.00"
+        }
+
+        //봄 - 원스토어
+        bomlive_skt {
+            dimension "flavors"
+//            applicationId "kr.co.watch.bmlv.android"
+            applicationId "kr.co.springtv.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //여기
+        yokiTV {
+            dimension "flavors"
+            applicationId "coj.yeukitv.android.air"
+            versionCode 1
+            versionName "4.6.01"
+        }
+
+        //여기 - 원스토어
+        yokiTV_skt {
+            dimension "flavors"
+            applicationId "com.yokilive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //101
+        tv101 {
+            dimension "flavors"
+            applicationId "ned.tivi101.android.air"
+            versionCode 4
+            versionName "4.6.00"
+        }
+
+        //101 - 원스토어
+        tv101_skt {
+            dimension "flavors"
+            applicationId "net.oneoonetv.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //79
+        tv79 {
+            dimension "flavors"
+            applicationId "kg.co.tv79.android.air"
+            versionCode 1
+            versionName "4.6.02"
+        }
+
+        //79 - 원스토어
+        tv79_skt {
+            dimension "flavors"
+            applicationId "kr.co.friendtv.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //도레미
+        //추가적으로 활성화 된 VXG 패키지 라이센스 존재함.
+        //ka.co.doremitv.android.air 앱이 잘릴 경우 사용할 것!
+        doremiTV {
+            dimension "flavors"
+            applicationId "kf.co.drmitivi.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //도레미 - 원스토어
+        doremiTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.doremilive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //깡통티비
+        kkangtongTV {
+            dimension "flavors"
+            applicationId "kd.watch.kktongtivi.android.air"
+            versionCode 5
+            versionName "4.6.00"
+        }
+
+        //깡통티비 - 원스토어
+        kkangtongTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.canistertv.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //아바타티비
+//        avataTV {
+//            dimension "flavors"
+//            applicationId "kr.co.avatatv.android.air"
+//            versionCode 2
+//            versionName "4.1.00"
+//        }
+
+        //대륙라이브 (<- 자두티비, 2018.08.16)
+        drlivetv {
+            dimension "flavors"
+            applicationId "ke.watch.daeyuklive.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //대륙라이브 - 원스토어
+        drlivetv_skt {
+            dimension "flavors"
+            applicationId "kr.co.daeyukair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //까까라이브 (<- 앵두티비, 2018.08.16)
+        kklivetv {
+            dimension "flavors"
+            applicationId "km.co.kkakkalive.android.air"
+            versionCode 1
+            versionName "4.6.01"
+        }
+
+        //까까라이브 - 원스토어
+        kklivetv_skt {
+            dimension "flavors"
+            applicationId "kr.co.kkakkatv.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //비제이라이브 (<- 딸기티비, 2018.08.16)
+        bjlivetv {
+            dimension "flavors"
+            applicationId "ke.co.bejlaiv.android.air"
+            versionCode 5
+            versionName "4.6.00"
+        }
+
+        //비제이라이브 - 원스토어
+        bjlivetv_skt {
+            dimension "flavors"
+            applicationId "kr.co.bejair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //호티비
+        hoTV {
+            dimension "flavors"
+            applicationId "ke.watch.hhootv.android.air"
+            versionCode 4
+            versionName "4.6.00"
+        }
+
+        //호티비 - 원스토어
+        hoTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.holive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //티비야
+        tvyaTV {
+            dimension "flavors"
+            applicationId "ki.co.tiviya.android.air"
+            versionCode 4
+            versionName "4.6.00"
+        }
+
+        //티비야 - 원스토어
+        tvyaTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.tvyalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //마카롱티비
+        macarongTV {
+            dimension "flavors"
+            applicationId "kc.co.mcrtv.android.air"
+            versionCode 2
+            versionName "4.6.00"
+        }
+
+        //마카롱티비 - 원스토어
+        macarongTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.macaronglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //사과티비 (ka.co.ppaptv.android.air)
+        ppapTV {
+            dimension "flavors"
+            applicationId "kd.co.ppaptv.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //사과티비 - 원스토어
+        ppapTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.applelive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //핫바티비 (<- 밴드티비, 2018.12.27)
+        hotbaTV {
+            dimension "flavors"
+            applicationId "km.watch.hbtv.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //핫바티비 - 원스토어
+        hotbaTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.hotbalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //원더티비
+        wondertv {
+            dimension "flavors"
+//            applicationId "kr.co.wondertv.android.air"
+            applicationId "kp.watch.wdtv.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //원더티비 - 원스토어
+        wondertv_skt {
+            dimension "flavors"
+//            applicationId "kr.co.wondertv.android.air"
+            applicationId "kr.co.wonderlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //조커티비
+        jokertv {
+            dimension "flavors"
+            applicationId "kn.watch.jktv.android.air"
+            versionCode 2
+            versionName "4.6.00"
+        }
+
+        //조커티비 - 원스토어
+        jokertv_skt {
+            dimension "flavors"
+            applicationId "kr.co.jokerlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //꾹티비
+        gguktv {
+            dimension "flavors"
+//            applicationId "kr.watch.kkuktv.android.air"
+            applicationId "kg.watch.ccuctivi.android.air"
+            versionCode 1
+            versionName "4.7.02"
+        }
+
+        //꾹티비 - 원스토어
+        gguktv_skt {
+            dimension "flavors"
+//            applicationId "kr.watch.kkuktv.android.air"
+            applicationId "kr.co.gguklive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //홀릭티비
+        holictv {
+            dimension "flavors"
+            applicationId "cob.watch.holictv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //홀릭티비 - 원스토어
+        holictv_skt {
+            dimension "flavors"
+            applicationId "com.holiclive.android.air"
+            versionCode 1
+            versionName "5.0.00"
+        }
+
+        //살구티비
+        salgutv {
+            dimension "flavors"
+            applicationId "coa.salgutv.android.air"
+            versionCode 6
+            versionName "4.6.00"
+        }
+
+        //살구티비 - 원스토어
+        salgutv_skt {
+            dimension "flavors"
+            applicationId "com.salgulive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //콘티비(엑스라이브 <- 옐라, 2020.01., 2021.03.)
+        kontv {
+            dimension "flavors"
+            applicationId "kr.co.xlivetv.android.air"
+            versionCode 8
+            versionName "4.6.01"
+        }
+
+        //콘티비 - 원스토어(엑스라이브 <- 옐라, 2020.01., 2021.03.)
+        kontv_skt {
+            dimension "flavors"
+            applicationId "com.xliveair.android.air"
+            versionCode 4
+            versionName "5.2.01"
+        }
+
+        //아재티비(2019.01.23 신규)
+        ajaetv {
+            dimension "flavors"
+            applicationId "com.ajjaelive.android.air"
+            versionCode 9
+            versionName "4.6.00"
+        }
+
+        //아재티비(2019.01.23 신규) - 원스토어
+        ajaetv_skt {
+            dimension "flavors"
+            applicationId "com.ajaeair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //팝스타티비(2019.01.23 신규)
+        popstartv {
+            dimension "flavors"
+            applicationId "ke.watch.ppstatv.android.air"
+            versionCode 4
+            versionName "4.6.00"
+        }
+
+        //팝스타티비(2019.01.23 신규) - 원스토어
+        popstartv_skt {
+            dimension "flavors"
+            applicationId "kr.co.popstarlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //남자티비(2019.01.23 신규)
+        njtv {
+            dimension "flavors"
+            applicationId "ki.namjativi.android.air"
+            versionCode 3
+            versionName "4.6.00"
+        }
+
+        //남자티비(2019.01.23 신규) - 원스토어
+        njtv_skt {
+            dimension "flavors"
+            applicationId "kr.co.menlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //놀자티비(2019.01.23 신규)
+        noljatv {
+            dimension "flavors"
+            applicationId "km.watch.roljatv.android.air"
+            versionCode 2
+            versionName "4.6.00"
+        }
+
+        //놀자티비(2019.01.23 신규) - 원스토어
+        noljatv_skt {
+            dimension "flavors"
+            applicationId "kr.co.noljalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //꿀밤티비(2019.02.01 신규)
+        ggbamtv {
+            dimension "flavors"
+            applicationId "coa.ggulbam.android.air"
+            versionCode 7
+            versionName "4.6.00"
+        }
+
+        //꿀밤티비(2019.02.01 신규) - 원스토어
+        ggbamtv_skt {
+            dimension "flavors"
+            applicationId "com.ggbamlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //선영아티비(2019.02.08 신규)
+        sunyoungatv {
+            dimension "flavors"
+            applicationId "cob.sunyoungatv.android.air"
+            versionCode 1
+            versionName "4.6.01"
+        }
+
+        //선영아티비(2019.02.08 신규) - 원스토어
+        sunyoungatv_skt {
+            dimension "flavors"
+            applicationId "com.sunyoungalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //야갤티비(2019.02.21 신규) - 서비스 종료
+//        yagalltv {
+//            dimension "flavors"
+//            applicationId "kj.co.yagelltv.android.air"
+//            versionCode 5
+//            versionName "4.6.00"
+//        }
+
+        //야갤티비(2019.02.21 신규) - 원스토어
+//        yagalltv_skt {
+//            dimension "flavors"
+//            applicationId "kr.co.yagallive.android.air"
+//            versionCode 3
+//            versionName "5.2.00"
+//        }
+
+        //물티비(2019.02.28 신규)
+        moolTV {
+            dimension "flavors"
+            applicationId "neq.multv.android.air"
+            versionCode 5
+            versionName "4.6.00"
+        }
+
+        //물티비(2019.02.28 신규) - 원스토어
+        moolTV_skt {
+            dimension "flavors"
+            applicationId "net.moollive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //버닝티비(2019.03.13 신규)
+        burningTV {
+            dimension "flavors"
+            applicationId "kl.co.burningtv.android.air"
+            versionCode 4
+            versionName "4.6.00"
+        }
+
+        //버닝티비(2019.03.13 신규) - 원스토어
+        burningTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.burninglive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //불렛티비(2019.03.27 신규) -> 총알티비로 서비스명 변경(2019.04.24)
+        chongalTV {
+            dimension "flavors"
+            applicationId "kj.co.chongtv.android.air"
+            versionCode 1
+            versionName "4.5.01"
+        }
+
+        //불렛티비(2019.03.27 신규) -> 총알티비로 서비스명 변경(2019.04.24) - 원스토어
+        chongalTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.delitv.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //블랑티비(2019.03.27 신규)
+        blancTV {
+            dimension "flavors"
+            applicationId "ke.co.blanctv.android.air"
+            versionCode 6
+            versionName "4.5.01"
+        }
+
+        //블랑티비(2019.03.27 신규) - 원스토어
+        blancTV_skt {
+            dimension "flavors"
+            applicationId "kr.co.blanclive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //썬라이브(2019.03.27 신규)
+        ssunliveTV {
+            dimension "flavors"
+            applicationId "cog.sunnlaiv.android.air"
+            versionCode 1
+            versionName "4.5.01"
+        }
+
+        //썬라이브(2019.03.27 신규) - 원스토어
+        ssunliveTV_skt {
+            dimension "flavors"
+            applicationId "com.ssunair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //뮤트라이브(2019.03.27 신규)
+        muteliveTV {
+            dimension "flavors"
+            applicationId "coe.mutelive.android.air"
+            versionCode 4
+            versionName "4.5.00"
+        }
+
+        //뮤트라이브(2019.03.27 신규) - 원스토어
+        muteliveTV_skt {
+            dimension "flavors"
+            applicationId "com.muteair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //팝콘라이브(2019.04.09 신규)
+        popkonlive {
+            dimension "flavors"
+//            applicationId "com.popkonlive.android.air"
+            applicationId "coc.pabconlibu.android.air"
+            versionCode 1
+            versionName "4.5.01"
+        }
+
+        //팝콘라이브(2019.04.09 신규) - 원스토어
+        popkonlive_skt {
+            dimension "flavors"
+//            applicationId "com.popkonlive.android.air"
+            applicationId "com.livepopcorn.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //팝콘업(2019.04.09 신규)
+        popkonup {
+            dimension "flavors"
+            applicationId "coe.watch.pabkonupp.android.air"
+            versionCode 2
+            versionName "4.5.00"
+        }
+
+        //팝콘업(2019.04.09 신규) - 원스토어
+        popkonup_skt {
+            dimension "flavors"
+            applicationId "com.popconuptv.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //엠라이브티비(2019.05.31 신규) - 서비스 종료
+//        mlivetv {
+//            dimension "flavors"
+//            applicationId "kr.co.mlivetv.android.air"
+//            versionCode 5
+//            versionName "4.2.00"
+//        }
+
+        //엠라이브티비(2019.05.31 신규) - 원스토어
+//        mlivetv_skt {
+//            dimension "flavors"
+//            applicationId "kr.co.mliveair.android.air"
+//            versionCode 3
+//            versionName "5.2.00"
+//        }
+
+        //일등티비(2019.06.05 신규)
+        firsttv {
+            dimension "flavors"
+            applicationId "kj.co.firsttivi.android.air"
+            versionCode 3
+            versionName "4.5.00"
+        }
+
+        //일등티비(2019.06.05 신규) - 원스토어
+        firsttv_skt {
+            dimension "flavors"
+            applicationId "kr.co.oneprizetv.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //오케이티비(2019.06.05 신규)
+        okaytv {
+            dimension "flavors"
+            applicationId "kp.co.okaytivi.android.air"
+            versionCode 3
+            versionName "4.5.00"
+        }
+
+        //오케이티비(2019.06.05 신규) - 원스토어
+        okaytv_skt {
+            dimension "flavors"
+            applicationId "kr.co.okaylive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //올빼미티비(2019.06.05 신규)
+        owltv {
+            dimension "flavors"
+            applicationId "ki.co.owltivi.android.air"
+            versionCode 3
+            versionName "4.5.00"
+        }
+
+        //올빼미티비(2019.06.05 신규) - 원스토어
+        owltv_skt {
+            dimension "flavors"
+            applicationId "kr.co.owlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //가자티비(2019.07.22 신규)
+        gazatv {
+            dimension "flavors"
+            applicationId "kj.co.gazatv.android.air"
+            versionCode 2
+            versionName "4.4.00"
+        }
+
+        //가자티비(2019.07.22 신규) - 원스토어
+        gazatv_skt {
+            dimension "flavors"
+            applicationId "kr.co.gazalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //당근티비(2019.07.22 신규)
+        carrottv {
+            dimension "flavors"
+            applicationId "kg.co.carrottv.android.air"
+            versionCode 1
+            versionName "4.4.01"
+        }
+
+        //당근티비(2019.07.22 신규) - 원스토어
+        carrottv_skt {
+            dimension "flavors"
+            applicationId "kr.co.carrotlive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //레드티비(2019.07.22 신규)
+        redlive {
+            dimension "flavors"
+            applicationId "kl.co.redlive.android.air"
+            versionCode 2
+            versionName "4.4.00"
+        }
+
+        //레드티비(2019.07.22 신규) - 원스토어
+        redlive_skt {
+            dimension "flavors"
+            applicationId "kr.co.colorred.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //야자티비(2019.10.22 신규)
+        yajatv {
+            dimension "flavors"
+            applicationId "com.yajatv.android.air"
+            versionCode 6
+            versionName "4.4.00"
+        }
+
+        //야자티비(2019.10.22 신규) - 원스토어
+        yajatv_skt {
+            dimension "flavors"
+            applicationId "com.yajalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //주디닷컴티비(2020.02.26 신규)
+        juditv {
+            dimension "flavors"
+            applicationId "kb.co.juditv.android.air"
+            versionCode 3
+            versionName "4.3.00"
+        }
+
+        //주디닷컴티비(2020.02.26 신규) - 원스토어
+        juditv_skt {
+            dimension "flavors"
+            applicationId "kr.co.judiair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //바바티비(2020.04.16 신규)
+        vavatv {
+            dimension "flavors"
+            applicationId "kb.co.vavatv.android.air"
+            versionCode 2
+            versionName "4.3.00"
+        }
+
+        //바바티비(2020.04.16 신규) - 원스토어
+        vavatv_skt {
+            dimension "flavors"
+            applicationId "kr.co.vavalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //곰돌이티비(2020.04.23 신규)
+        gomdoritv {
+            dimension "flavors"
+            applicationId "cob.gomdoritv.android.air"
+            versionCode 4
+            versionName "4.3.01"
+        }
+
+        //곰돌이티비(2020.04.23 신규) - 원스토어
+        gomdoritv_skt {
+            dimension "flavors"
+            applicationId "com.gomdoriair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //콜라티비(2020.05.22 신규)
+        colatv {
+            dimension "flavors"
+            applicationId "kr.co.colatv.android.air"
+            versionCode 5
+            versionName "4.3.00"
+        }
+
+        //콜라티비(2020.05.18 신규) - 원스토어
+        colatv_skt {
+            dimension "flavors"
+            applicationId "kr.co.colalive.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        //봉티비(2020.06.25 신규)
+        bongtv {
+            dimension "flavors"
+            applicationId "kr.bonggtv.android.air"
+            versionCode 6
+            versionName "4.2.00"
+        }
+
+        //봉티비(2020.06.25 신규) - 원스토어
+        bongtv_skt {
+            dimension "flavors"
+            applicationId "kr.bongair.android.air"
+            versionCode 4
+            versionName "5.2.00"
+        }
+
+        // 로맨스티비(2020.07.28 신규)
+        romancetv {
+            dimension "flavors"
+            applicationId "net.romancetv.android.air"
+            versionCode 6
+            versionName "4.2.00"
+        }
+
+        // 로맨스티비(2020.07.28 신규) - 원스토어
+        romancetv_skt {
+            dimension "flavors"
+            applicationId "net.romanceair.android.air"
+            versionCode 4
+            versionName "5.2.00"
+        }
+
+        // 여우티비 (2020.08.18 신규)
+        yeoutv {
+            dimension "flavors"
+            applicationId "kr.co.yeouutv.android.air"
+            versionCode 3
+            versionName "4.2.00"
+        }
+
+        // 여우티비 (2020.08.18 신규) - 원스토어
+        yeoutv_skt {
+            dimension "flavors"
+            applicationId "kr.co.yeouuair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        // 꿀물티비 (2020.08.28 신규)
+        ggmultv {
+            dimension "flavors"
+            applicationId "com.ggwatertv.android.air"
+            versionCode 5
+            versionName "4.2.00"
+        }
+
+        // 꿀물티비 (2020.08.28 신규) - 원스토어
+        ggmultv_skt {
+            dimension "flavors"
+            applicationId "com.ggwaterair.android.air"
+            versionCode 4
+            versionName "5.2.00"
+        }
+
+        // 팝콘24티비 (2020.09.07 신규)
+        popkontv24 {
+            dimension "flavors"
+            applicationId "coa.popkon24tv.android.air"
+            versionCode 1
+            versionName "4.2.02"
+        }
+
+        // 팝콘24티비 (2020.09.07 신규) - 원스토어
+        popkontv24_skt {
+            dimension "flavors"
+            applicationId "com.popkon24air.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        // 별풍선티비 (2020.09.07 신규)
+        starballoontv {
+            dimension "flavors"
+            applicationId "com.starballoontv.android.air"
+            versionCode 3
+            versionName "4.2.00"
+        }
+
+        // 별풍선티비 (2020.09.07 신규) - 원스토어
+        starballoontv_skt {
+            dimension "flavors"
+            applicationId "com.starballoonair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        // 밈라이브 (2020.09.24 신규)
+        memelive {
+            dimension "flavors"
+            applicationId "kr.co.memelive.android.air"
+            versionCode 4
+            versionName "4.3.00.014"
+        }
+
+        // 밈라이브 (2020.09.24 신규) - 원스토어
+        memelive_skt {
+            dimension "flavors"
+            applicationId "ka.co.memeair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        // 라쿤티비 (2020.11.04 신규)
+        racoontv {
+            dimension "flavors"
+            applicationId "com.racoontv.android.air"
+            versionCode 3
+            versionName "4.2.00"
+        }
+
+        // 라쿤티비 (2020.11.04 신규) - 원스토어
+        racoontv_skt {
+            dimension "flavors"
+            applicationId "com.racoonair.android.air"
+            versionCode 3
+            versionName "5.2.00"
+        }
+
+        // 일구티비 (2020.11. 신규)
+        tving19 {
+            dimension "flavors"
+            applicationId "kb.co.tving19tv.android.air"
+            versionCode 2
+            versionName "4.1.00"
+        }
+
+        // 일구티비 (2020.11. 신규) - 원스토어
+        tving19_skt {
+            dimension "flavors"
+            applicationId "kr.co.tving19air.android.air"
+            versionCode 2
+            versionName "5.1.00"
+        }
+
+        // 밀크티비 (2020.11. 신규)
+        milktv {
+            dimension "flavors"
+            applicationId "ka.co.milktv.android.air"
+            versionCode 2
+            versionName "4.1.00"
+        }
+
+        // 밀크티비 (2020.11. 신규) - 원스토어
+        milktv_skt {
+            dimension "flavors"
+            applicationId "kr.co.milkair.android.air"
+            versionCode 2
+            versionName "5.1.00"
+        }
+
+        // 쭉빵티비 (2021.01.29 신규)
+        jjukbbangtv {
+            dimension "flavors"
+            applicationId "com.jjukbbangtv.android.air"
+            versionCode 3
+            versionName "4.1.01"
+        }
+
+        // 쭉빵티비 (2021.01.29 신규) - 원스토어
+        jjukbbangtv_skt {
+            dimension "flavors"
+            applicationId "com.jjukbbangair.android.air"
+            versionCode 2
+            versionName "5.1.00"
+        }
+
+        // 캔들티비 (2021.01.29 신규)
+        candletv {
+            dimension "flavors"
+            applicationId "kr.co.candletv.android.air"
+            versionCode 3
+            versionName "4.1.01"
+        }
+
+        // 캔들티비 (2021.01.29 신규) - 원스토어
+        candletv_skt {
+            dimension "flavors"
+            applicationId "kr.co.candleair.android.air"
+            versionCode 2
+            versionName "5.1.00"
+        }
+
+        // 플렉스티비 (2021.03.05 신규)
+        flextv {
+            dimension "flavors"
+            applicationId "kr.flextv.android.air"
+            versionCode 1
+            versionName "4.0.00"
+        }
+
+        // 플렉스티비 (2021.03.05 신규) - 원스토어
+        flextv_skt {
+            dimension "flavors"
+            applicationId "kr.flexair.android.air"
+            versionCode 1
+            versionName "5.0.00"
+        }
+
+        // 카라멜티비 (2021.04.23 신규)
+        carameltv {
+            dimension "flavors"
+            applicationId "kr.co.carameltivi.android.air"
+            versionCode 1
+            versionName "4.0.00"
+        }
+
+        // 카라멜티비 (2021.04.23 신규) - 원스토어
+        carameltv_skt {
+            dimension "flavors"
+            applicationId "kr.co.caramelair.android.air"
+            versionCode 1
+            versionName "5.0.00"
+        }
+
+        // 핑크티비 (2021.05.11 신규)
+        pinktv {
+            dimension "flavors"
+            applicationId "kr.co.hotpinktv.android.air"
+            versionCode 1
+            versionName "4.0.00"
+        }
+
+        // 핑크티비 (2021.05.11 신규) - 원스토어
+        pinktv_skt {
+            dimension "flavors"
+            applicationId "kr.co.hotpinkair.android.air"
+            versionCode 1
+            versionName "5.0.00"
+        }
+
+        // 고래티비 (2021.05.12 신규)
+        goretv {
+            dimension "flavors"
+            applicationId "ka.co.goretv.android.air"
+            versionCode 1
+            versionName "4.0.02"
+        }
+
+        // 고래티비 (2021.05.12 신규) - 원스토어
+        goretv_skt {
+            dimension "flavors"
+            applicationId "kr.co.goreair.android.air"
+            versionCode 1
+            versionName "5.0.00"
+        }
+    }
+}
+
+dependencies {
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation "com.google.android.gms:play-services-auth:19.0.0"
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.facebook.android:facebook-marketing:5.9.0'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation('io.socket:socket.io-client:1.0.0') {
+        exclude group: 'org.json', module: 'json'
+    }
+    //firebase FCM
+    implementation 'com.google.firebase:firebase-core:18.0.2'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
+    def exoplayer_version = '2.13.2'
+    implementation "com.google.android.exoplayer:exoplayer-core:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-ui:$exoplayer_version"
+    implementation "com.google.android.exoplayer:exoplayer-hls:$exoplayer_version"
+    implementation "com.google.android.exoplayer:extension-rtmp:$exoplayer_version"
+    implementation 'com.appsflyer:af-android-sdk:5.3.0'
+    implementation 'com.android.installreferrer:installreferrer:2.2'
+    implementation 'io.dfinery:abx-common-rm:1.1.2301'
+
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    // 카카오톡 sdk를 사용하기 위해 필요.
+    implementation group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
+    // 카카오톡 로그인을 사용하기 위해 필요.
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+    // 페이스북 로그인
+    implementation 'com.facebook.android:facebook-login:5.15.3'
+    implementation 'androidx.viewpager2:viewpager2:1.1.0-alpha01'
+    implementation "androidx.browser:browser:1.3.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.0.4"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+}
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'realm-android'

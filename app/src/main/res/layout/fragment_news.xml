@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/text_entertainment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_news_drawable"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/new_title_entertainment"
+            android:textColor="@drawable/selector_news_text"/>
+
+        <TextView
+            android:id="@+id/text_sports"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_news_drawable"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/new_title_sport"
+            android:textColor="@drawable/selector_news_text"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <TextView
+            android:id="@+id/btn_top"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="18dp"
+            android:layout_marginRight="18dp"
+            android:alpha="0.6"
+            android:background="@drawable/yellow_oval"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:text="Top"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+    </FrameLayout>
+</LinearLayout>

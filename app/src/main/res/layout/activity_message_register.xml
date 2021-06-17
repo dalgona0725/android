@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_FFFFFF"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionBarSize"
+        android:background="@color/main_bg"
+        app:contentInsetStart="0dp"
+        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+        app:theme="@style/Toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/root_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="9.5dp"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="0.8dp"
+                android:background="@color/popkon_message_view_horizontalbar_color" />
+
+            <!-- 받는 사람 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9.5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="11dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/icon_people"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="@string/receive_user_title"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="19.3dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="11.5dp"
+                    android:background="@color/popkon_message_view_verticalbar_color"/>
+
+                <EditText
+                    android:id="@+id/edit_receiver_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:layout_marginLeft="11.3dp"
+                    android:layout_marginRight="11.3dp"
+                    android:gravity="left|center_vertical"
+                    android:hint="@string/reply_input_id_hint_text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="9.5dp"
+                android:background="@color/popkon_message_view_horizontalbar_color" />
+
+            <!-- 내용 title -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9.5dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="11.3dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/icon_write_1"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="11dp"
+                    android:text="@string/message_content_title"
+                    android:layout_alignParentLeft="true"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="9.5dp"
+                android:background="@color/popkon_message_view_horizontalbar_color" />
+
+            <!-- 내용 EditText -->
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="17.3dp"
+                android:paddingBottom="11.3dp"
+                android:paddingLeft="11.3dp"
+                android:paddingRight="11.3dp"
+                android:clipToPadding="false"
+                android:fillViewport="true"
+                android:scrollbars="vertical"
+                android:scrollbarStyle="outsideOverlay">
+
+                <EditText
+                    android:id="@+id/edit_message_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:isScrollContainer="true"
+                    android:gravity="left"
+                    android:maxLength="1000"
+                    android:textSize="12.5sp"
+                    android:inputType="textMultiLine"
+                    android:hint="@string/message_input_content_hint_text"/>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/popkon_message_view_horizontalbar_color" />
+
+            <!-- 글자수 카운트 -->
+            <TextView
+                android:id="@+id/txt_cnt_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right|center_vertical"
+                android:layout_marginTop="9.5dp"
+                android:layout_marginRight="4.3dp"
+                android:textColor="@color/popkon_message_admin_text_color"
+                android:textSize="12.8dp"
+                android:textStyle="normal" />
+
+            <!-- 버튼 -->
+            <TextView
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/selector_center_drawable"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/reply_message_title"
+                android:textColor="@drawable/selector_center_text" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

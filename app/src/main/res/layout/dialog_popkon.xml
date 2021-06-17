@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/layout_popup"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/main_bg"
+        android:gravity="center_vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:textColor="@color/main_text"
+        android:textSize="@dimen/txt_dialog_title"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/text_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#595959"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="100dp"
+            android:paddingTop="12.8dp"
+            android:paddingBottom="12.8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:gravity="top|left"
+            android:scrollbars="vertical"
+            android:scrollbarStyle="outsideOverlay"
+            android:inputType="textMultiLine"
+            android:maxLength="300"
+            android:hint="@string/watch_report_text_hint"
+            android:text=""
+            android:textColor="#000000"
+            android:background="@color/watch_report_text_background"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btn_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_gray_xml"
+            android:gravity="center"
+            android:text="@string/cancel"
+            android:textColor="#444444"
+            android:textSize="@dimen/txt_button"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_ok_xml"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:textColor="@color/popup_ok_text"
+            android:textSize="@dimen/txt_button"/>
+
+    </LinearLayout>
+
+</LinearLayout>

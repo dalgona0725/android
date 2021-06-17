@@ -1,0 +1,15 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape>
+            <gradient android:angle="360" android:endColor="@color/pop_gift_precced_bg"
+                      android:startColor="@color/pop_gift_precced_bg"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <gradient android:angle="360" android:endColor="@color/pop_gift_bg" android:startColor="@color/pop_gift_bg"/>
+        </shape>
+    </item>
+
+</selector>

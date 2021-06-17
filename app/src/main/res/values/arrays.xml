@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <array name="username_colors">
+        <item>@color/chatSuper</item>
+        <item>@color/chatGeneral</item>
+        <item>@color/chatPopGift</item>
+        <item>@color/chatMaster</item>
+        <item>@color/chatManager</item>
+        <item>@color/chatVip</item>
+        <item>@color/chatFan</item>
+        <item>@color/chatRecommend</item>
+        <item>@color/chatPolice</item>
+        <item>@color/chatOut</item>
+        <item>@color/nickMasterBoy</item>
+        <item>@color/nickManager</item>
+        <item>@color/nickMasterGirl</item>
+        <item>@color/nickBoy</item>
+        <item>@color/nickGirl</item>
+        <item>@color/nickPolice</item>
+        <item>@color/chatt_noticece_text</item>
+        <item>@color/chatClient</item>
+        <item>@color/chatWarn</item>
+    </array>
+
+    <string-array name="live_broadcast_type_array">
+        <item>일반방송</item>
+        <item>팬방송</item>
+        <item>유료방송</item>
+    </string-array>
+
+    <string-array name="live_broadcast_sub_type_level_array">
+        <item>VIP</item>
+        <item>다이아몬드</item>
+        <item>골드</item>
+        <item>실버</item>
+    </string-array>
+
+    <string-array name="live_broadcast_sub_type_coin_array">
+        <item>팝콘 1개</item>
+        <item>팝콘 5개</item>
+        <item>팝콘 7개</item>
+        <item>팝콘 10개</item>
+        <item>팝콘 20개</item>
+        <item>팝콘 30개</item>
+        <item>팝콘 40개</item>
+        <item>팝콘 50개</item>
+        <item>팝콘 60개</item>
+        <item>팝콘 70개</item>
+        <item>팝콘 80개</item>
+        <item>팝콘 90개</item>
+        <item>팝콘 100개</item>
+    </string-array>
+
+    <string-array name="live_broadcast_settings_array">
+        <item>저화질</item>
+        <item>표준</item>
+        <item>고화질</item>
+    </string-array>
+
+    <string-array name="live_broadcast_items_array">
+        <item>사용안함</item>
+        <item>실버</item>
+        <item>골드</item>
+    </string-array>
+
+    <string-array name="freeze_level">
+        <item>전체</item>
+        <item>매니저 이하</item>
+        <item>VIP 이하</item>
+        <item>다이아몬드 이하</item>
+        <item>골드 이하</item>
+        <item>실버 이하</item>
+    </string-array>
+
+    <string-array name="warn_array">
+        <item>%s님 그만! 이런 채팅은 안 돼요, 안 돼!</item>
+        <item>%s님 잠시만요~ 1분만 쉬어 가세요!</item>
+        <item>%s님 잠깐! 3분동안 진정하세요~</item>
+        <item>%s님 얼음! 저는 5분 뒤에 녹아요!</item>
+        <item>%s님 스톱!! 10분동안 그대로 멈춰라!</item>
+    </string-array>
+
+    <string-array name="counsel_type_array">
+        <item>선택해주세요</item>
+        <item>팝콘 충전 및 결제 오류</item>
+        <item>기능 관련</item>
+        <item>제재 관련</item>
+        <item>회원가입/탈퇴</item>
+        <item>방송 관련 문의</item>
+        <item>시청 관련 문의</item>
+        <item>환불 문의</item>
+        <item>프로그램 설치 문의</item>
+        <item>환전 신청 및 본인인증</item>
+        <item>제보</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="gift_repeat_time">
+        <item>3초</item>
+        <item>4초</item>
+        <item>5초</item>
+        <item>6초</item>
+        <item>7초</item>
+        <item>8초</item>
+        <item>9초</item>
+        <item>10초</item>
+    </string-array>
+
+    <array name="slide_name_array">
+        <item>@string/slide_live</item>
+        <item>@string/slide_level</item>
+        <item>@string/slide_vod</item>
+        <!--<item>@string/slide_audition</item>-->
+        <!--<item>@string/slide_event</item>-->
+        <item>@string/slide_store</item>
+        <item>@string/slide_my_Luv</item>
+    </array>
+
+    <array name="sorting_menu">
+        <item>@string/sort_popularity</item>
+        <!--<item>@string/slide_event</item>-->
+        <item>@string/sort_new</item>
+        <item>@string/sort_watch</item>
+    </array>
+</resources>

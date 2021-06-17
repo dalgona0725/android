@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#d9d9d9"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/main_bg"
+        android:gravity="center"
+        android:text="@string/guideline_and_policy"
+        android:textColor="@color/main_text"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight=".7"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6.75dp"
+            android:text="@string/guideline_policy_title"
+            android:textColor="#2f2f2f"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/color_FFFFFF"
+            android:scrollbarFadeDuration="0">
+
+            <TextView
+                android:id="@+id/text_guideline_massage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/guideline_message"
+                android:textColor="#474747"
+                android:textSize="@dimen/txt_dialog_info" />
+        </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/check_guideline_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/checkbox2"
+                android:gravity="center|start"
+                android:text="@string/agree"
+                android:textColor="#474747"
+                android:textSize="16dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/eventPushParentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6.75dp"
+            android:text="@string/policy_event_push_title"
+            android:textColor="#2f2f2f"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/color_FFFFFF"
+            android:scrollbarFadeDuration="0">
+
+            <TextView
+                android:id="@+id/text_policy_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/policy_message"
+                android:textColor="#474747"
+                android:textSize="@dimen/txt_dialog_info" />
+        </ScrollView>
+
+
+        <RadioGroup
+            android:id="@+id/check_event_push_radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/check_policy_disagree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/checkbox2"
+                android:gravity="center|start"
+                android:text="@string/disagree"
+                android:textColor="#474747"
+                android:textSize="16dp" />
+
+            <RadioButton
+                android:id="@+id/check_policy_agree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableLeft="@drawable/checkbox2"
+                android:gravity="center|start"
+                android:text="@string/agree"
+                android:textColor="#474747"
+                android:textSize="16dp" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="41.5dp"
+        android:layout_marginTop="3.75dp"
+        android:background="@drawable/selector_policy_ok_button"
+        android:gravity="center"
+        android:text="@string/ok"
+        android:textColor="@color/popup_ok_text"
+        android:textSize="@dimen/txt_dialog_title"
+        android:enabled="false"/>
+
+</LinearLayout>

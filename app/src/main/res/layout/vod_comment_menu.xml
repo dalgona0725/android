@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relative_comment_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@color/color_10000000">
+
+    <LinearLayout
+        android:id="@+id/linear_comment_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_E8E8E8" />
+
+        <TextView
+            android:id="@+id/btn_comment_warn"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_FFFFFF"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/report"
+            android:textSize="@dimen/txt_button"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_E8E8E8" />
+
+        <TextView
+            android:id="@+id/btn_comment_close"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_FFFFFF"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:text="@string/cancel"
+            android:textSize="@dimen/txt_button"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</RelativeLayout>

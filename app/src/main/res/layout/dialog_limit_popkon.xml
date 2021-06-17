@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/popkon_limit_popup_bg_color"
+    android:orientation="vertical">
+
+    <!-- 팝업 타이틀 바 영역 -->
+    <RelativeLayout
+        android:id="@+id/title_area"
+        android:layout_width="match_parent"
+        android:layout_height="33.8dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/main_bg">
+
+        <TextView
+            android:id="@+id/popkon_limit_popup_titlebar_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14.5dp"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@string/popkon_limit_popup_titlebar"
+            android:textColor="@color/main_text"
+            android:textSize="@dimen/txt_dialog_title"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <!-- 팝콘 선물 한도 개수 초과 텍스트 -->
+            <TextView
+                android:id="@+id/text_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@string/popkon_limit_popup_content"
+                android:textColor="@color/popkon_limit_popup_title_color"
+                android:textSize="12.3sp"
+                android:textStyle="bold" />
+
+            <!-- 구매 확인 후 이용 관련 텍스트 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@string/popkon_limit_popup_check_content"
+                android:textColor="@color/popkon_limit_popup_subtitle_color"
+                android:textSize="12.3sp"
+                android:textStyle="bold" />
+
+            <!-- 테이블 타이틀 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/popup_limit_popkon_title_bg_rect"
+                android:orientation="horizontal" >
+
+                <!-- 당일 선물 한도 제목 -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="@string/popkon_limit_popup_left_title"
+                    android:textColor="@color/popkon_limit_popup_body_color"
+                    android:textSize="11.6sp"
+                    android:textStyle="bold" />
+
+                <!-- 버티컬 바 -->
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/popkon_limit_popup_table_border_color" />
+
+                <!-- 당월 선물 한도 제목 -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="@string/popkon_limit_popup_right_title"
+                    android:textColor="@color/popkon_limit_popup_body_color"
+                    android:textSize="11.6sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- 테이블 내용 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="110.3dp"
+                android:layout_marginBottom="14.8dp"
+                android:background="@drawable/popup_limit_popkon_content_bg_rect"
+                android:orientation="horizontal" >
+
+                <!-- 당일 선물 한도 내용 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_popkon_daily_limit_cnt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:textColor="@color/popkon_limit_popup_body_color"
+                        android:textSize="11.6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_popkon_daily_limit_refresh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:textColor="@color/popkon_limit_popup_subtitle_color"
+                        android:textSize="11.6sp"
+                        android:textStyle="bold"
+                        android:text="@string/popkon_limit_popup_left_cnt_refresh" />
+
+                    <TextView
+                        android:id="@+id/txt_popkon_daily_limit_present"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:textColor="@color/popkon_limit_popup_body_color"
+                        android:textSize="11.6sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <!-- 버티컬 바 -->
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/popkon_limit_popup_table_border_color" />
+
+                <!-- 당월 선물 한도 내용 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_popkon_monthly_limit_cnt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:textColor="@color/popkon_limit_popup_body_color"
+                        android:textSize="11.6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txt_popkon_monthly_limit_refresh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:textColor="@color/popkon_limit_popup_subtitle_color"
+                        android:textSize="11.6sp"
+                        android:textStyle="bold"
+                        android:text="@string/popkon_limit_popup_right_cnt_refresh" />
+
+                    <TextView
+                        android:id="@+id/txt_popkon_monthly_limit_present"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:textColor="@color/popkon_limit_popup_body_color"
+                        android:textSize="11.6sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- VIP 텍스트 -->
+            <LinearLayout
+                android:id="@+id/popkon_limit_vip_comment_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14.8dp"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/popkon_limit_popup_mark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/popkon_limit_popup_text"
+                    android:textColor="@color/popkon_limit_popup_body_color"
+                    android:textSize="12.3sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- 하단 확인 버튼 -->
+    <TextView
+        android:id="@+id/btn_popkon_limit_ok"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_ok_xml"
+        android:gravity="center"
+        android:text="@string/ok"
+        android:textColor="@color/popup_ok_text"
+        android:textSize="@dimen/txt_button"
+        android:textStyle="bold" />
+</LinearLayout>

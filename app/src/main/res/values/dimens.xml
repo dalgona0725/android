@@ -1,0 +1,138 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!--
+         Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html
+    -->
+    <dimen name="navigation_drawer_width">304dp</dimen>
+    <dimen name="navigation_drawer_widthLive">315dp</dimen>
+
+    <dimen name="spacing">8dp</dimen>
+    
+    
+	<!-- <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen> -->
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    
+	<dimen name="margin_standard">16dp</dimen>
+    <dimen name="margin_short">8dp</dimen>
+    <dimen name="margin_extra_short">4dp</dimen>
+
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+    <dimen name="toolbar_margin_start">72dp</dimen>
+    <dimen name="flexible_space_height">72dp</dimen>
+    <dimen name="flexible_space_image_height">240dp</dimen>
+    <dimen name="flexible_space_show_fab_offset">120dp</dimen>
+
+    <dimen name="parallax_image_height">180dp</dimen>
+    <dimen name="tab_height">35dp</dimen>
+
+    <dimen name="header_bar_height">72dp</dimen>
+    <dimen name="intersection_height">16dp</dimen>
+
+    <dimen name="sliding_slop">32dp</dimen>
+    <dimen name="sliding_overlay_blur_size">4dp</dimen>
+
+    <dimen name="actionBarSize">40dp</dimen>
+
+
+    <!-- text size -->
+    <dimen name="txt_toolbar_title">20dp</dimen>
+    <dimen name="txt_tab_title">13dp</dimen>
+    <dimen name="txt_button">13dp</dimen>
+    <dimen name="txt_none_contents">20dp</dimen>
+    <dimen name="txt_cate_tab_title">14dp</dimen>
+    <dimen name="txt_cate_sub_title">10dp</dimen>
+    <dimen name="txt_user_list">10dp</dimen>
+    <dimen name="txt_sidemenu_title">15dp</dimen>
+
+    <dimen name="txt_list_title">14dp</dimen>
+    <dimen name="txt_list_subtitle">12dp</dimen>
+    <dimen name="txt_list_info">10dp</dimen>
+
+    <dimen name="txt_grid_title">12dp</dimen>
+    <dimen name="txt_grid_subtitle">10dp</dimen>
+    <dimen name="txt_grid_info">10dp</dimen>
+
+    <dimen name="txt_view_title">16dp</dimen>
+    <dimen name="txt_view_subtitle">12dp</dimen>
+    <dimen name="txt_view_info">14dp</dimen>
+
+    <dimen name="txt_dialog_title">16dp</dimen>
+    <dimen name="txt_dialog_message">14dp</dimen>
+    <dimen name="txt_dialog_subtitle">12dp</dimen>
+    <dimen name="txt_dialog_info">12dp</dimen>
+    <dimen name="txt_dialog_contents">12dp</dimen>
+
+    <dimen name="txt_setting_title">14dp</dimen>
+    <dimen name="txt_setting_subtitle">16dp</dimen>
+
+    <dimen name="txt_watermark">10dp</dimen>
+
+    <dimen name="txt_lock_title">30dp</dimen>
+    <dimen name="txt_sub_title">16dp</dimen>
+
+    <dimen name="txt_dialog_new_title">16dp</dimen>
+    <dimen name="txt_dialog_new_message">14dp</dimen>
+
+    <!-- 외침 관련 사이즈 -->
+    <!-- TranslateAnimationTextLayout - Default Font Size -->
+    <dimen name="shout_img_txt_gap_margin_left">8.75dp</dimen>
+    <dimen name="shout_text_size">12.5dp</dimen>
+    <dimen name="shout_parent_layout_height">44dp</dimen>
+    <dimen name="shout_left_img_bg_width">44dp</dimen>
+    <dimen name="shout_left_img_bg_height">44dp</dimen>
+    <dimen name="shout_left_img_width">16.5dp</dimen>
+    <dimen name="shout_left_img_height">16.75dp</dimen>
+
+    <!-- 입장효과 -->
+    <dimen name="enterevt_pc_portrait_margin_left_right">44dp</dimen>
+    <dimen name="enterevt_pc_portrait_margin_top">18dp</dimen>
+    <dimen name="enterevt_pc_portrait_margin_bottom">40dp</dimen>
+    <dimen name="enterevt_pc_landscape_margin_left_right">120dp</dimen>
+    <dimen name="enterevt_pc_landscape_margin_top">6.75dp</dimen>
+    <dimen name="enterevt_mobile_margin_left_right">50dp</dimen>
+    <dimen name="enterevt_mobile_margin_top">22dp</dimen>
+
+    <dimen name="gift_tab_height_size">32.5dp</dimen>
+    <dimen name="gift_tab_text_size">10.4sp</dimen>
+    <dimen name="gift_tab_popkon_width">27dp</dimen>
+    <dimen name="gift_tab_popkon_height">37dp</dimen>
+    <dimen name="gift_tab_small_popkon_width">12.3dp</dimen>
+    <dimen name="gift_tab_small_popkon_height">15.5dp</dimen>
+    <dimen name="watch_chat_edit_bg_height">40dp</dimen>
+    <dimen name="watch_chat_edit_margin_top">0dp</dimen>
+    <dimen name="watch_chat_edit_margin_bottom">0dp</dimen>
+    <dimen name="watch_chat_edit_margin_right">0dp</dimen>
+    <dimen name="watch_chat_btn_bg_padding_left">10dp</dimen>
+    <dimen name="watch_chat_btn_bg_padding_right">0dp</dimen>
+    <dimen name="watch_chat_btn_width">40dp</dimen>
+    <dimen name="watch_chat_btn_height">40dp</dimen>
+    <dimen name="watch_chat_btn_padding">8dp</dimen>
+    <dimen name="watch_chat_btn_margin_right">0dp</dimen>
+    <dimen name="watch_repeat_layout_margin_right">40.5dp</dimen>
+
+    <dimen name="setting_container_reft_padding">0dp</dimen>
+    <dimen name="setting_container_right_padding">0dp</dimen>
+    <dimen name="setting_selection_top_padding">0dp</dimen>
+
+    <dimen name="search_live_main_left_margin">8dp</dimen>
+    <dimen name="search_live_main_right_margin">8dp</dimen>
+    <dimen name="search_vod_main_top_margin">8dp</dimen>
+    <dimen name="search_vod_main_bottom_margin">8dp</dimen>
+    <dimen name="search_vod_main_left_margin">8dp</dimen>
+    <dimen name="search_vod_main_right_margin">8dp</dimen>
+    <dimen name="search_vod_thumbnail_width">150dp</dimen>
+    <dimen name="search_vod_thumbnail_height">84dp</dimen>
+    <dimen name="search_vod_thumbnail_right_margin">2dp</dimen>
+    <dimen name="search_vod_info_left_padding">8dp</dimen>
+    <dimen name="search_vod_info_right_padding">8dp</dimen>
+    <dimen name="search_vod_info_top_padding">8dp</dimen>
+    <dimen name="search_vod_info_bottom_padding">4dp</dimen>
+</resources>

@@ -1,0 +1,175 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/present_popkon_divider"/>
+
+    <LinearLayout
+        android:id="@+id/linear_popkon"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:background="@color/present_popkon_bg"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/linear_info"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text_popkon_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="#1f1714"
+                android:textSize="@dimen/txt_dialog_title"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/btn_popkon_purchase"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_popkon_purchase_bg"
+                android:gravity="center"
+                android:text="@string/popkon_purchase"
+                android:textColor="@color/present_popkon_purchase_text"
+                android:textSize="@dimen/txt_button"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear_popkon_premium"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginBottom="4dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/img_popkon_caramel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:src="@drawable/icon_pop_caramel"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:text="@string/popkon_caramel"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/img_popkon_sweet"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/icon_pop_honey"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:text="@string/popkon_sweet"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/img_popkon_onion"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:src="@drawable/icon_pop_onion"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:text="@string/popkon_onion"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="#c2b40e"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edit_pop_count"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:paddingLeft="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/present_edit_bg"
+                android:enabled="false"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#2e261f"
+                android:textSize="@dimen/txt_view_info"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/btn_send_pop"
+                android:layout_width="90dp"
+                android:layout_height="30dp"
+                android:background="@drawable/pop_gift_selector"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/present"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/txt_view_info"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

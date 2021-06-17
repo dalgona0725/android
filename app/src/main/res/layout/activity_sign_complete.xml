@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_E8E8E8">
+
+    <RelativeLayout
+        android:background="@color/color_FFFFFF"
+        android:id="@+id/rlTop"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <TextView
+            android:text="@string/sign_complete_title"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:textSize="17.5dp"
+            android:textColor="@color/color_494949"
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/rlTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlHomeMove"
+        android:layout_marginLeft="7.5dp"
+        android:layout_marginRight="7.5dp"
+        android:layout_marginTop="7.5dp"
+        android:background="@color/color_FFFFFF">
+
+        <LinearLayout
+            android:layout_marginTop="101.5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/complete" />
+
+            <TextView
+                android:id="@+id/tvCelebration"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="48dp"
+                android:gravity="center_horizontal"
+                android:textSize="24dp"
+                android:textColor="@color/color_494949"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_complete_send" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/accent"
+                android:textSize="24dp"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_complete_desc" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_margin="7.5dp"
+        android:id="@+id/rlHomeMove"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/main_button_press">
+
+
+        <TextView
+            android:id="@+id/tvHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="@string/back_home"
+            android:textColor="@color/color_FFFFFF"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+</RelativeLayout>

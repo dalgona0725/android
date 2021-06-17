@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#E9BA01</color> <!-- 상태바 팝콘에어:#E9BA01 ASP:#7f7f7f -->
+    <color name="main_bg">#FFCF01</color>  <!-- 메인 컬러 -->
+    <color name="sub_bg">#edbd00</color>  <!-- 서브 컬러 -->
+    <color name="accent">#B28E00</color>     <!-- 탭 선택 언더라인 -->
+    <color name="color_60accent">#60B28E00</color>
+
+    <color name="main_text">#4d4d4d</color>     <!-- 메인 텍스트 컬러 -->
+    <color name="main_text_unselected">#804d4d4d</color>     <!-- 메인 텍스트 컬러 투명도 50% -->
+    <color name="sub_text">#4d4d4d</color>      <!-- 서브 텍스트 컬러 -->
+
+    <color name="lock_text">#735d00</color>      <!-- 잠금화면 색상 -->
+
+    <color name="notification_bg">#FFCF01</color>  <!-- noti 컬러 -->
+
+    <color name="username0">#e21400</color>
+    <color name="username1">#91580f</color>
+    <color name="username2">#f8a700</color>
+    <color name="username3">#f78b00</color>
+    <color name="username4">#58dc00</color>
+    <color name="username5">#287b00</color>
+    <color name="username6">#a8f07a</color>
+    <color name="username7">#4ae8c4</color>
+    <color name="username8">#3b88eb</color>
+    <color name="username9">#3824aa</color>
+    <color name="username10">#a700ff</color>
+    <color name="username11">#d300e7</color>
+    
+	<color name="colorPrimary">#3F51B5</color>
+    <color name="colorAccent">#dd3518</color>
+
+    <color name="popkonair_bg">#FFCF01</color>
+
+    <color name="present_popkon_bg">#f3e111</color>
+    <color name="present_popkon_solid">#beb11f</color>
+    <color name="present_popkon_stroke">#474318</color>
+    <color name="present_popkon_radio_solid">#beb11f</color>
+    <color name="present_popkon_radio_stroke">#474318</color>
+    <color name="present_popkon_edit_solid">#e3e0ad</color>
+    <color name="present_popkon_edit_stroke">#474318</color>
+    <color name="present_popkon_edit_sub_solid">#f5de49</color>
+    <color name="present_popkon_edit_sub_stroke">#e2c929</color>
+    <color name="present_popkon_line">#aea10f</color>
+    <color name="present_popkon_divider">#c2b40e</color>
+
+    <color name="chat_hide_bg">#FF000000</color>
+    <color name="setting_backgroud">#2E2E2E</color>
+    <color name="setting_group">#AAAAAA</color>
+    <color name="setting_list">#eeeeee</color>
+    <color name="setting_line">#AAAAAA</color>
+    <color name="setting_sub_line">@android:color/transparent</color>
+    <color name="setting_container_bg_color">@color/main_bg</color>
+
+    <color name="primary">#009688</color>
+    <color name="primaryDark">#00796b</color>
+    <color name="accentLight">#F4FF81</color>
+    <color name="background">@color/color_D9D9D9</color>
+    
+    <color name="chatSuper">#ffe59e</color>
+    <color name="chatGeneral">@color/color_FFFFFF</color>
+    <color name="chatPopGift">#fff700</color>
+    <color name="chatMaster">#fc7905</color>
+    <color name="chatManager">#ffe59e</color>
+    <color name="chatVip">#00ff9f</color>
+    <color name="chatFan">#f78b00</color>
+    <color name="chatRecommend">#faa700</color>
+    <color name="chatPolice">#ff0000</color>
+    <color name="chatOut">#ff0505</color>
+    <color name="nickMasterBoy">#8a00ff</color>
+    <color name="nickManager">#0090ff</color>
+    <color name="nickBoy">#09b1ff</color>
+    <color name="nickGirl">#ff6060</color>
+    <color name="nickPolice">#09b1ff</color>
+    <color name="nickSuper">#fc7905</color>
+    <color name="nickMasterGirl">#ff6060</color>
+    <color name="chatClient">#00f6ff</color>
+    <color name="chatWarn">#ffe59e</color>
+
+    <color name="gold">#FFD700</color>
+    <color name="silver">#E4E4E4</color>
+    <color name="bronze">#CD7F32</color>
+
+    <color name="pop_gift_bg">#3e2c02</color>
+    <color name="pop_gift_precced_bg">#aa230f</color>
+
+
+    <color name="popup_ok_text">@color/color_FFFFFF</color>
+
+    <color name="setting_bg_white">@color/color_FFFFFF</color>
+    <color name="setting_text_black">#000000</color>
+
+    <!-- 외침 관련 색상 -->
+    <color name="shout_msg_img_bg_color">#F0622A</color>
+    <color name="shout_msg_text_color">#FF814F</color>
+    <color name="shout_msg_text_bg_color">#00000000</color>
+    <color name="shout_dlg_bg_color">@color/color_FFFFFF</color>
+
+    <!-- 입장효과 -->
+    <color name="enterevt_nickname_text_color">#f8b62a</color>
+    <color name="enterevt_label_text_color">#aaaaaa</color>
+
+    <!-- Snackbar 색상 -->
+    <!-- Snackbar 배경색 (Alpha: 85% RGB: 28, 28, 28) -->
+    <color name="popkon_snackbar_bg_color">#D81C1C1C</color>
+    <!-- Snackbar 글자색 (RGB: 255, 255, 255) -->
+    <color name="popkon_snackbar_text_color">@color/color_FFFFFF</color>
+
+    <!-- 쪽지 -->
+    <color name="popkon_message_vertical_bar_color">#505050</color>
+    <color name="popkon_message_horizontal_bar_color">#dddddd</color>
+    <color name="popkon_message_admin_text_color">#e7604a</color>
+    <color name="popkon_message_normal_text_color">#6c6c6c</color>
+    <color name="popkon_message_view_horizontalbar_color">#d4d4d4</color>
+    <color name="popkon_message_view_verticalbar_color">#d4d4d4</color>
+
+    <!-- 랭킹 -->
+    <color name="popkon_rank_bg_color">#f2f2f2</color>
+    <color name="popkon_rank_list_item_color">@color/color_FFFFFF</color>
+    <color name="popkon_rank_text_color">#3d3d3d</color>
+
+    <!-- 회원 가입 -->
+    <color name="popkon_signup_divider">#b7b7b7</color>
+    <color name="popkon_signup_circle_dot">#ffcc00</color>
+    <color name="popkon_signup_edittext_title">#e7604a</color>
+    <color name="popkon_signup_enable_bg_color">@color/color_EBEBEB</color>
+    <color name="popkon_signup_enable_text_color">#a8a8a8</color>
+
+    <!-- 팝콘 선물 한도 제한 안내 -->
+    <color name="popkon_limit_popup_bg_color">@color/color_FFFFFF</color>
+    <color name="popkon_limit_popup_titlebar_color">#ffcc00</color>
+    <color name="popkon_limit_popup_title_color">#3d3d3d</color>
+    <color name="popkon_limit_popup_subtitle_color">#838383</color>
+    <color name="popkon_limit_popup_body_color">#3d3d3d</color>
+    <color name="popkon_limit_popup_table_border_color">#cfcfcf</color>
+    <color name="popkon_limit_popup_table_fill_color">#f6f6f6</color>
+
+    <color name="chatt_noticece_text">#00d5d7</color>
+
+    <!-- 자동 선물 기능 -->
+    <color name="gift_tab_unselect_text">#ff460d</color>
+    <color name="gift_tab_select_text">@color/color_FFFFFF</color>
+
+    <color name="gift_tab_unselect_bg">@color/color_FFFFFF</color>
+    <color name="gift_tab_select_bg">#ff460d</color>
+    <color name="gift_text_color">#1f2124</color>
+    <color name="gift_divider_color">#1f2124</color>
+
+    <color name="gift_repeat_send_count">#ff460d</color>
+    <color name="gift_repeat_total_count">@color/color_FFFFFF</color>
+
+    <color name="gift_popup_notice_color">@color/color_FFFFFF</color>
+    <color name="gift_popup_divider">#c8c8c8</color>
+
+    <color name="login_guide_text_color_black">#402f01</color>
+    <color name="login_guide_text_color_red">#dd3518</color>
+    <color name="login__text_color">#4c4c4c</color>
+    <color name="login_button_text_enable_color">#552500</color>
+    <color name="login_button_text_disable_color">#804d4d4d</color>
+
+    <color name="change_password_text_color">#e8604a</color>
+    <color name="change_password_text_hint_color">#bebebe</color>
+    <color name="change_password_button_bg_color">#e7604a</color>
+    <color name="change_password_button_text_color">@color/color_FFFFFF</color>
+
+    <color name="chatting_admin_notice">#00f6ff</color>
+
+    <color name="ranking_type_color">#2a2a2a</color>
+    <color name="ranking_top_grade_color">#dd3518</color>
+    <color name="ranking_normal_grade_color">#2a2a2a</color>
+    <color name="ranking_title_color">#2a2a2a</color>
+    <color name="ranking_nick_color">#dd3518</color>
+    <color name="ranking_onair_background_color">#dd3518</color>
+    <color name="ranking_onair_text_color">@color/color_FFFFFF</color>
+    <color name="ranking_button_stroke_color">#d0d5db</color>
+    <color name="ranking_button_solid_color">@color/color_FFFFFF</color>
+
+    <color name="watch_report_text_background">@color/color_EBEBEB</color>
+    <color name="watch_chat_edit_bg">@color/color_FFFFFF</color>
+    <color name="watch_chat_button_bg">#FFCF01</color>
+    <color name="watch_info_text_color">#FFCF01</color>
+    <color name="present_popkon_purchase_text">#000000</color>
+    <color name="vod_comment_sort_text">#FFCF01</color>
+    <color name="vod_reply_count_title_color">#FFCF01</color>
+    <color name="vod_reply_sort_title_color">#FFCF01</color>
+    <color name="vod_no_reply">#FFCF01</color>
+    <color name="vod_comment_empty_list">#FFCF01</color>
+
+    <color name="color_626262">#626262</color>
+    <color name="search_vod_main_backgrounndcolor">@color/background</color>
+
+    <!-- 셀럽티비 사용-->
+    <color name="color_383838">#383838</color>
+    <color name="color_FFFFFF">#ffffff</color>
+    <color name="color_A8A8A8">#a8a8a8</color>
+    <color name="color_FF000000">#FF000000</color>
+    <color name="color_000000">#000000</color>
+    <color name="color_E8E8E8">#E8E8E8</color>
+    <color name="color_C9C9C9">#c9c9c9</color>
+    <color name="color_8A8A8A">#8a8a8a</color>
+    <color name="color_E2E2E2">#e2e2e2</color>
+    <color name="color_494949">#494949</color>
+    <color name="color_6545E6">#6545e6</color>
+    <color name="color_262626">#262626</color>
+    <color name="color_4D4D4D">#4d4d4d</color>
+    <color name="color_5D3FD4">#5d3fd4</color>
+    <color name="color_F8F8F8">#F8F8F8</color>
+    <color name="color_8F8F8F">#8F8F8F</color>
+    <color name="color_575757">#575757</color>
+    <color name="color_2D82EA">#2D82EA</color>
+    <color name="color_EA2D5B">#EA2D5B</color>
+    <color name="color_7A7A7A">#7a7a7a</color>
+    <color name="color_E0E0E0">#e0e0e0</color>
+    <color name="color_D8D8D8">#D8D8D8</color>
+    <color name="color_9FACBF">#9FACBF</color>
+    <color name="color_D2DAE5">#D2DAE5</color>
+    <color name="color_E9161D">#E9161D</color>
+    <color name="color_10000000">#10000000</color>
+    <color name="color_30000000">#4d000000</color>
+    <color name="color_D2D6DD">#d2d6dd</color>
+    <color name="color_C6C6C6">#c6c6c6</color>
+    <color name="color_666666">#666666</color>
+    <color name="color_DD3518">#dd3518</color>
+
+    <color name="button_disable_color">#AAAAAA</color>
+
+    <color name="color_1A000000">#1a000000</color>
+    <color name="color_ABBED1">#abbed1</color>
+    <color name="color_00AB92">#00ab92</color>
+    <color name="color_0057EC">#0057ec</color>
+    <color name="color_FF3366">#ff3366</color>
+    <color name="color_9405E5">#9405e5</color>
+    <color name="color_FFBB00">#ffbb00</color>
+    <color name="color_FF00A1">#ff00a1</color>
+    <color name="COLOR_FAA700">#faa700</color>
+    <color name="color_009FFF">#009fff</color>
+    <color name="color_12C700">#12c700</color>
+    <color name="color_888888">#888888</color>
+    <color name="color_222222">#222222</color>
+    <color name="color_484848">#484848</color>
+    <color name="color_373737">#373737</color>
+    <color name="color_F5F5F5">#f5f5f5</color>
+    <color name="color_3A3A3A">#3a3a3a</color>
+    <color name="color_D9D9D9">#d9d9d9</color>
+    <color name="color_808080">#808080</color>
+    <color name="color_7F7F7F">#7F7F7F</color>
+    <color name="color_watch_fan_button">#f5d350</color>
+
+    <color name="color_EBEBEB">#ebebeb</color>
+</resources>

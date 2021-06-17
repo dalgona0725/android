@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="@color/main_bg"
+        app:contentInsetStart="0dp"
+        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar" />
+
+    <!-- 다음 버튼 -->
+    <TextView
+        android:id="@+id/btn_send_number"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_terms_and_conditions"
+        android:gravity="center"
+        android:text="@string/terms_and_conditions_next_btn"
+        android:textColor="#000000"
+        android:textSize="14.3sp"
+        android:textStyle="normal" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/btn_send_number"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- 휴대폰 인증 -->
+            <LinearLayout
+                android:id="@+id/layout_cellphone_certification_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23.3dp"
+                android:layout_marginRight="26.3dp"
+                android:layout_marginTop="19.3dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="3dp"
+                        android:layout_height="3dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/signup_circle_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8.8dp"
+                        android:text="@string/certification_phone_sub_title"
+                        android:textColor="@color/popkon_rank_text_color"
+                        android:textSize="15.4sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="18.8dp"
+                    android:layout_marginLeft="11.8dp"
+                    android:text="@string/regist_member_phone_number_title"
+                    android:textColor="@color/popkon_signup_edittext_title"
+                    android:textSize="13.4sp"
+                    android:textStyle="normal" />
+
+                <!-- 핸드폰 번호 -->
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edt_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="left|center_vertical"
+                    android:hint="@string/regist_member_phone_number_hint"
+                    android:inputType="phone"
+                    android:maxLength="13"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:paddingLeft="12.8dp"
+                    android:textColor="@color/popkon_rank_text_color"
+                    android:textSize="13.0sp"
+                    android:textStyle="normal"
+                    app:backgroundTint="@color/popkon_signup_divider"/>
+
+            </LinearLayout>
+
+            <!-- 인증번호 -->
+            <LinearLayout
+                android:id="@+id/layout_confirm_certification_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22.3dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="19dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="3dp"
+                        android:layout_height="3dp"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitXY"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/signup_circle_shape"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="8.8dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/certification_number_sub_title"
+                        android:textColor="@color/popkon_rank_text_color"
+                        android:textSize="15.4sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="18.8dp"
+                    android:layout_marginLeft="11.8dp"
+                    android:text="@string/certification_number_title"
+                    android:textColor="@color/popkon_signup_edittext_title"
+                    android:textSize="13.4sp"
+                    android:textStyle="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/btn_retry_send_number"
+                        android:layout_width="60dp"
+                        android:layout_height="26.8dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginRight="10dp"
+                        android:text="@string/certification_number_btn_retry"
+                        android:textColor="@color/popkon_signup_edittext_title"
+                        android:textSize="12.3sp"
+                        android:textStyle="normal"
+                        android:background="@drawable/button_round_rect" />
+
+                    <!-- 인증 번호 입력 -->
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_certification_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="11.3dp"
+                        android:layout_toLeftOf="@id/btn_retry_send_number"
+                        android:digits="0123456789"
+                        android:gravity="left|center_vertical"
+                        android:hint="@string/regist_member_certification_number_hint"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:paddingLeft="12.8dp"
+                        android:textColor="@color/popkon_rank_text_color"
+                        android:textSize="12.3sp"
+                        android:textStyle="normal"
+                        app:backgroundTint="@color/popkon_signup_divider" />
+
+                    <TextView
+                        android:id="@+id/txt_countdown_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="15.0dp"
+                        android:layout_toLeftOf="@id/btn_retry_send_number"
+                        android:textColor="@color/popkon_signup_edittext_title"
+                        android:textSize="12.3sp"
+                        android:textStyle="normal"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

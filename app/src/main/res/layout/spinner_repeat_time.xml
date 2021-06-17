@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?android:attr/listPreferredItemHeight"
+    android:includeFontPadding="false"
+    android:textColor="@color/gift_divider_color"
+    android:textSize="10.5sp"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:paddingStart="0dp"
+    android:paddingEnd="0dp"
+    android:checkMark="?android:attr/listChoiceIndicatorSingle"
+    android:ellipsize="marquee"
+    />

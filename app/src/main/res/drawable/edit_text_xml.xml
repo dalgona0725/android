@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- <item android:drawable="@drawable/twitter_im_edittext_normal" android:state_enabled="true" android:state_window_focused="false"/>
+    <item android:drawable="@drawable/twitter_im_edittext_normal" android:state_enabled="false" android:state_window_focused="false"/>
+    <item android:drawable="@drawable/twitter_im_edittext_normal" android:state_pressed="true"/>
+    <item android:drawable="@drawable/twitter_im_edittext_focused" android:state_enabled="true" android:state_focused="true"/>
+    <item android:drawable="@drawable/twitter_im_edittext_normal" android:state_enabled="true"/> -->
+    <!--<item android:state_focused="true"
+        android:drawable="@mipmap/text_input_active" />
+    <item android:state_focused="false"
+        android:drawable="@mipmap/text_input_deactive"/>-->
+    <item><shape>
+            <padding android:left="16dp" android:right="16dp" />
+        </shape></item>
+   
+</selector>
